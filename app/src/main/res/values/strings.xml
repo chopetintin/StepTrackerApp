@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Hellolocation</string>
+    <string name="textview1">Latitude</string>
+    <string name="textview2">TextView</string>
+    <string name="textview3">Longitude</string>
+    <string name="textview4">TextView</string>
+    <string name="textview5">Speed</string>
+    <string name="textview6">Meters/second</string>
+    <string name="step">Step</string>
+    <string name="textview7">NumberofSteps</string>
+    <string name="distance">Distance</string>
+    <string name="meters">Meters</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "809253656330",
+    "firebase_url": "https://hellolocation-9f7a9.firebaseio.com",
+    "project_id": "hellolocation-9f7a9",
+    "storage_bucket": "hellolocation-9f7a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809253656330:android:f879fd7c2d6ec931fb8cf3",
+        "android_client_info": {
+          "package_name": "com.example.hellolocation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809253656330-146oa978uka4lt6fs1v9e2irf7ldm9uo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hellolocation",
+            "certificate_hash": "d7f2b34ceb5b677cb45bfea55cbd91e641113ac6"
+          }
+        },
+        {
+          "client_id": "809253656330-3kk6k0qfo07orke2b5cmggj32ceo7o1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD05FYkx2J-qhA8EIHBz0lq0mlEoFZndwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809253656330-3kk6k0qfo07orke2b5cmggj32ceo7o1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
