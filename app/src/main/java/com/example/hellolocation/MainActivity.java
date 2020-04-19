@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mStep = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
-        //Initialising the Chronometer.
+        //Initialising the Chronometer. This basic UI will be displayed to show that the app is
+        //working correctly.
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
 
         //At the beginning, we will initialize the Chronometer to the same base as the
