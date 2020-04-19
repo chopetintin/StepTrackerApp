@@ -213,17 +213,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         intTimer = 0;
                         mChronometer.setBase(SystemClock.elapsedRealtime());
                         mChronometer.stop();
-                        //timeAtCaseNull = intTimer;
-                        Log.d("0", "We are in State = " + stepDetector);
-                        Log.d("E", "Time at State " + stepDetector + "=" + timeAtCaseNull);
-                        Log.d("Timer", "Timer is " + intTimer);
-//                        if (intTimer >= 3) {
-//                            mChronometer.stop();
-//                            mChronometer.setBase(SystemClock.elapsedRealtime());
-//                            mChronometer.start();
-//                            stepDetector = 0;
-//                        }
                         break;
+
                     case 1:
                         //The user makes his first step. When it is detected by the sensor, we go into
                         //case 1. The chronometer base was set to the system clock on the previous case, so the timer is reset
@@ -232,9 +223,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         //mChronometer.setBase(SystemClock.elapsedRealtime());
                         mChronometer.start();
                         timeAtCaseOne = intTimer;
-                        Log.d("1", "We are in State = " + stepDetector);
-                        Log.d("E", "Time at State " + stepDetector + "=" + timeAtCaseOne);
-                        Log.d("Timer", "Timer is " + intTimer);
 
                         //If we spend less than 3 seconds in this state, this means the user will have taken
                         //a second step.The location is saved into lastLocation, as we saw earlier,
@@ -245,13 +233,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         if (intTimer <= 3) {
                             lastLocationLat = tlat;
                             lastLocationLong = tlong;
-                            Log.d("A", "lastLocationLat = " + lastLocationLat);
-                            Log.d("B", "lastLocationLong = " + lastLocationLong);
+
                         } else {
-                            //timeAtCaseNull = 0;
-//                            mChronometer.stop();
-//                            mChronometer.setBase(SystemClock.elapsedRealtime());
-//                            mChronometer.start();
+
                             stepDetector = 0;
                         }
                         break;
@@ -261,24 +245,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         //it into firstLocationLat and firstLocationLong, which will update the first location.
                         //With the location from this case and the location from the previous case, we now have
                         //the distance the user has covered with this step. This will be calculated in case 3.
-
                         timeAtCaseTwo = intTimer - timeAtCaseOne;
-                        Log.d("2", "We are in State = " + stepDetector);
-                        Log.d("E", "Time at State " + stepDetector + "=" + timeAtCaseTwo);
-                        Log.d("Timer", "Timer is " + intTimer);
+
                         if (intTimer <= 6) {
                             firstLocationLat = tlat;
                             firstLocationLong = tlong;
-                            Log.d("C", "firstLocationLat = " + firstLocationLat);
-                            Log.d("D", "firstLocationLong = " + firstLocationLong);
                         }
                         //If Timer is greater than 6, then this means the user has taken the step but then stopped.
-                        //We will go back to the idle state if this happens.
+                        //We have set it to 6 to allow a max
+                        //of 3 seconds in the first case and 3 seconds
+                        //in the second case.
+                        //We will go back to the idle state (0) if this happens.
                         else {
-                            //timeAtCaseOne = 0;
-//                            mChronometer.stop();
-//                            mChronometer.setBase(SystemClock.elapsedRealtime());
-//                            mChronometer.start();
                             stepDetector = 0;
                         }
                         break;
@@ -286,7 +264,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         //This is the final state, and marks the point where the user has taken the final step.
                         //We record this location into secondLocation. Now we have 3 locations, and we can therefore
                         //calculate the distance covered in two steps.
-                        Log.d("3", "We are in State = " + stepDetector);
                         secondLocationLat = tlat;
                         secondLocationLong = tlong;
 
@@ -332,29 +309,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                 writeNewUser("Step" + (2 * dataBaseEntry + 1), "Asymmetrical", stepTwo, speedTwo);
                             }
                         }
-                        Log.d("A", "lastLocationLat = " + lastLocationLat);
-                        Log.d("B", "lastLocationLong = " + lastLocationLong);
-                        Log.d("C", "firstLocationLat = " + firstLocationLat);
-                        Log.d("D", "firstLocationLong = " + firstLocationLong);
-                        Log.d("E", "secondLocationLat = " + secondLocationLat);
-                        Log.d("F", "secondLocationLong = " + secondLocationLong);
-                        Log.d("G", "FirstStep distance is = " + distanceOne);
-                        Log.d("H", "SecondStep distance is = " + distanceTwo);
-
                         //When this has finished, we reset all the variables and go back to case
                         //0 to record further steps.
                         mChronometer.stop();
                         mChronometer.setBase(SystemClock.elapsedRealtime());
                         mChronometer.start();
-                        //timeAtCaseNull = 0;
                         timeAtCaseOne = 0;
                         timeAtCaseTwo = 0;
                         stepDetector = 0;
-                        Log.d("W", "success = " + timeAtCaseNull);
-                        Log.d("W", "success = " + timeAtCaseOne);
-                        Log.d("W", "success = " + timeAtCaseTwo);
-                        Log.d("W", "success = " + stepDetector);
-                        Log.d("X", "Restart Process Successfull");
                         break;
                     default:
                         mChronometer.stop();
